@@ -1,0 +1,35 @@
+services:
+    #  The osimis orthanc PACS server with the OHIF viewer
+    #  Before running this container, make sure that the orthanc-config submodule is cloned
+    orthanc-server:
+        image: osimis/orthanc
+        container_name: orthanc-server
+        restart: unless-stopped
+        depends_on:
+            - postgresql
+        ports:
+            - 8042:8042
+            - 4242:4242
+        environment:
+            TRANSFERS_PLUGIN_ENABLED: true # Transfers accelerator plugin
+            OHIF_PLUGIN_ENABLED: true # Default OHIF plugin
+        volumes:
+            - ./orthanc-config/dev/orthanc.json:/etc/orthanc/orthanc.json:ro
+            - ./orthanc-config/dev/autorouting.lua:/etc/orthanc/autorouting.lua
+            - ./orthanc-config/python-scripts:/etc/orthanc/python-scripts
+
+    # The PG server for development mode
+    postgresql:
+        container_name: postgresql
+        image: postgres:12
+        restart: unless-stopped
+        environment:
+            PGDATA: /var/lib/postgresql/data/db-files/
+        ports:
+            - 5432:5432
+        command: -c 'max_connections=300'
+        volumes:
+            - ./db/postgresql-db-files:/var/lib/postgresql/data/db-files
+            - ./db/init/postgresql-db-init.sql:/docker-entrypoint-initdb.d/init.sql
+        env_file:
+            - ./envs/postgresql.env
