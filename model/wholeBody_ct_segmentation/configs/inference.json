@@ -12,7 +12,7 @@
     "output_dir": "$'D:/projects/ct-segmentation/output/mask'",
     "dataset_dir": "sampledata",
     "datalist": "$list(sorted(glob.glob(@dataset_dir + '/imagesTs/*.nii.gz')))",
-    "device": "'cpu'",
+    "device": "cpu",
     "pixdim": "$[1.5, 1.5, 1.5] if @displayable_configs#highres else [3.0, 3.0, 3.0]",
     "modelname": "$'model.pt' if @displayable_configs#highres else 'model_lowres.pt'",
     "network_def": {
@@ -97,7 +97,7 @@
         "overlap": "@displayable_configs#sw_overlap",
         "padding_mode": "replicate",
         "mode": "gaussian",
-        "device": "'cpu'"
+        "device": "cpu"
     },
     "postprocessing": {
         "_target_": "Compose",

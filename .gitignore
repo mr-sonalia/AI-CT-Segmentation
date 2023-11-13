@@ -2,3 +2,4 @@
 /volumes
 /envs/*.env
 /model/**/models
+/output/*
