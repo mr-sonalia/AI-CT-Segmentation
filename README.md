@@ -1,6 +1,12 @@
-# AI-Powered CT Segmentation & Automation
+# AI-Powered CT Segmentation & Segmentation Automation
 
-The goal of this project is to generate CT segmentation through MONAI and PyTorch, and automate the generation process in a DICOM SCP.
+The goal of this project is to generate segmentation masks for full-body CT scans through MONAI and PyTorch and automate the generation process using Python scripts in a DICOM SCP.
+
+Project features:
+
+-   AI-generated whole-body CT Segmentation mask.
+-   Organ volume computation.
+-   Automation of the segmentation process using Python and a DICOM SCP server.
 
 Access the CT Segmentation notebook from [here](/src/notebooks/segmentation-model.ipynb).
 
