@@ -1,6 +1,6 @@
-# AI CT Segmentation Automation
+# AI-Powered CT Segmentation& Automation
 
-The goal of this project is to automate the CT segmentation in a DICOM SCP, using MONAI and PyTorch.
+The goal of this project is to generate CT segmentation through MONAI and PyTorch, and automate the generation process in a DICOM SCP.
 
 Access the CT Segmentation notebook from [here](/src/notebooks/segmentation-model.ipynb).
 
